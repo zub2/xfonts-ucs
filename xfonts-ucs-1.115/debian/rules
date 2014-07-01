@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+
+PKG_NAME = xfonts-ucs-cp895
+BUILD = build
+STAGING = debian/$(PKG_NAME)
+DEST = /usr/share/fonts/X11/misc/
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	# export the fonts in the cp859 encoding
+	mkdir -p "$(BUILD)"
+	cd "$(BUILD)" && \
+	for bdf in ../[0-9]*x[0-9].bdf ../[0-9]*x[1-9][0-9].bdf; do \
+		echo "Exporting $$bdf..."; \
+		"../ucs2any.pl" "$$bdf" "../debian/cp895.txt" IBM-CP895; \
+	done
+	# convert from bdf to pcf and gzip
+	cd "$(BUILD)" && \
+	for bdf in *.bdf; do \
+		echo "Converting $$bdf..."; \
+		bdftopcf "$$bdf" -o "$${bdf%bdf}pcf"; \
+		echo "GZipping $${bdf%bdf}pcf..."; \
+		gzip "$${bdf%bdf}pcf"; \
+	done
+
+override_dh_auto_install:
+	mkdir -p "$(STAGING)/$(DEST)"
+	cp "$(BUILD)"/*.pcf.gz "$(STAGING)/$(DEST)"
+
+override_dh_auto_clean:
+	# undo what override_dh_auto_build does
+	rm -rf "$(BUILD)"

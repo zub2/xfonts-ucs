@@ -1,0 +1,13 @@
+Source: xfonts-ucs
+Maintainer: David Kozub <zub.272@gmail.com>
+Section: misc
+Priority: optional
+Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 9), xfonts-utils
+
+Package: xfonts-ucs-cp895
+Architecture: all
+Depends: ${misc:Depends}, xfonts-utils
+Description: ucs-fonts in cp895 encoding
+ This is a deb package of a cp895-encoded export of the ucc-fonts. These
+ fonts can be used with dosemu (xdosemu).
