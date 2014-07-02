@@ -61,7 +61,11 @@ Just do:
 
     sudo dpkg -i xfonts-ucs-cp895_1.115-1_all.deb
 
-And that should be it. After restaring X you should see the fonts:
+And that should be it. If your X server is running run
+
+    xset fp rehash
+
+to make it see the new fonts. Then
 
     xlsfonts | grep cp895
 
