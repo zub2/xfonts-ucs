@@ -53,13 +53,13 @@ and then run:
 
     debuild -us -uc
 
-The resulting files should be built in the parent directory of the current directory (so, in the root of the repository). The file you care about is `xfonts-ucs-cp895_1.115-1_all.deb`.
+The resulting files should be built in the parent directory of the current directory (so, in the root of the repository). The file you care about is `xfonts-ucs-cp895_1.115-2_all.deb`.
 
 ## How to install the package
 
 Just do:
 
-    sudo dpkg -i xfonts-ucs-cp895_1.115-1_all.deb
+    sudo dpkg -i xfonts-ucs-cp895_1.115-2_all.deb
 
 And that should be it. If your X server is running run
 
