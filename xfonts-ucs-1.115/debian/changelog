@@ -1,5 +1,7 @@
-xfonts-ucs (1.115-1) UNRELEASED; urgency=medium
+xfonts-ucs (1.115-2) UNRELEASED; urgency=medium
 
   * Initial release.
+  * Update to be buildable with current perl.
+  * Update debian standards version.
 
- -- David Kozub <zub.272@gmail.com>  Tue, 01 Jul 2014 23:27:49 +0200
+ -- David Kozub <zub.272@gmail.com>  Tue, 31 Jan 2017 21:20:53 +0100
