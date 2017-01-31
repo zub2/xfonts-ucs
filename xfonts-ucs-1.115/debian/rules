@@ -22,7 +22,7 @@ override_dh_auto_build:
 		echo "Converting $$bdf..."; \
 		bdftopcf "$$bdf" -o "$${bdf%bdf}pcf"; \
 		echo "GZipping $${bdf%bdf}pcf..."; \
-		gzip "$${bdf%bdf}pcf"; \
+		gzip -n "$${bdf%bdf}pcf"; \
 	done
 
 override_dh_auto_install:
