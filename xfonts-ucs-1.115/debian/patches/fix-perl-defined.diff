@@ -1,0 +1,20 @@
+Description: Fix incorrect usage of defined() in ucs2any.pl.
+ It seems now usage of defined() on an array is an error. See
+ http://perldoc.perl.org/functions/defined.html.
+ .
+ xfonts-ucs (1.115-1) UNRELEASED; urgency=medium
+ .
+   * Initial release.
+Author: David Kozub <zub.272@gmail.com>
+
+--- xfonts-ucs-1.115.orig/ucs2any.pl
++++ xfonts-ucs-1.115/ucs2any.pl
+@@ -274,7 +274,7 @@ while ($#ARGV > 0) {
+     for $target (@chars) {
+ 	$ucs = $map{$target};
+ 	if ($char{$ucs} =~ /^BBX\s+(\d+)\s+(\d+)\s+(-?\d+)\s+(-?\d+)\s*$/m) {
+-	    if (defined @bbx) {
++	    if (@bbx) {
+ 		@bbx = combine_bbx(@bbx, $1, $2, $3, $4);
+ 	    } else {
+ 		@bbx = ($1, $2, $3, $4);
